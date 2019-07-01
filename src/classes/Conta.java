@@ -75,7 +75,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Conta{" + "tipoDaConta=" + tipoDaConta + ", cliente=" + cliente + ", numeroConta=" + numeroConta + ", saldo=" + saldo + ", extrato=" + extrato + '}';
+        return "\n                     Conta{" + "\n                            tipoDaConta=" + tipoDaConta + ",\n                            " + cliente + ",\n                            numeroConta=" + numeroConta + ",\n                            saldo=" + saldo +"\n                     }";
     }
     
    

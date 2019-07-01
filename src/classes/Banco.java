@@ -23,6 +23,24 @@ public class Banco {
     }
     
     /*1-Virada do Mes*/
+    public void viradaMes(){
+        for(int i=0; i < agencias.size() ; i++){
+            for(int j=0; j < agencias.get(i).getContas().size();j++){
+                
+                if(agencias.get(i).getContas().get(j).getCliente().getTipoCliente().equals("TRADICIONAL")){//Taxa de anuidade da conta tradicional é descontada
+                   agencias.get(i).getContas().get(j).descontoTaxaTradicional();
+                }
+                
+                if(agencias.get(i).getContas().get(j).getTipoDaConta().equals("F")){//Taxa de anuidade da Conta Fácil é descontada
+                   agencias.get(i).getContas().get(j).descontarAnuidadeContaFacil();
+                }
+                
+                if(agencias.get(i).getContas().get(j).getTipoDaConta().equals("P")){
+                   agencias.get(i).getContas().get(j).rendimentoPoupanca();
+                }
+            }
+        }
+    }
     
     /*2-Cadastrar Agencia*/
     public boolean cadastrarAgencia(String nomeAgencia, String numeroAgencia,String pais, String cidade, String rua, String bairro, String cep, int numero){
@@ -63,6 +81,7 @@ public class Banco {
         }
         return false;
     }
+    
     /*4-Saque*/
     public boolean saque(String numeroAgencia, String numeroConta, double valor ){
         for(int i = 0; i < agencias.size();i++)
@@ -128,7 +147,6 @@ public class Banco {
     }
     
     /*7-Gerar Extratos*/
-    
     public String gerandoExtrato(String numeroAgencia,String numeroConta){
         
           for(int i = 0; i < agencias.size();i++)
@@ -172,7 +190,7 @@ public class Banco {
                 
         System.out.println("\n2: LISTA TODOS OS CLIENTES QUE POSSUEM MAIS DE UMA CONTA\n\n");
         Scanner ler = new Scanner(System.in);
-        
+        System.out.print("Informe o CPF do Cliente: ");
         String cpf = ler.nextLine();//Informa o CPF do Cliente
         int cont=0;
         for(int i=0; i < agencias.size(); i++ ){//Verifica pelo numero do CPF se este cliente possui mais de uma conta
@@ -185,6 +203,21 @@ public class Banco {
         }
         System.out.println("\n\nO Cliente possui "+cont+" contas\n\n");
     }
+    
     /*9-Fechar Conta*/
+    public boolean fecharConta(String numeroAgencia, String numeroConta){
+         for(int i = 0; i < agencias.size();i++)
+         {
+            if(numeroAgencia.equals(agencias.get(i).getNumeroAgencia())){
+                for(int j = 0;j < agencias.get(i).getContas().size();j++){
+                    if(numeroConta.equals(agencias.get(i).getContas().get(j).getNumeroConta())){
+                        agencias.get(i).getContas().remove(j);
+                        return true;
+                    }
+                }
+            }
+         }
+         return false;
+    }
     
 }

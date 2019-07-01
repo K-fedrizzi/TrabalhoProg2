@@ -69,7 +69,7 @@ public class Enderenco {
 
     @Override
     public String toString() {
-        return "Enderenco{" + "pais=" + pais + ", cidade=" + cidade + ", rua=" + rua + ", bairro=" + bairro + ", cep=" + cep + ", numero=" + numero + '}';
+        return "                            Enderenco{" + "pais=" + pais + ", cidade=" + cidade + ", rua=" + rua + ", bairro=" + bairro + ", cep=" + cep + ", numero=" + numero + '}';
     }
    
     

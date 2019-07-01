@@ -86,7 +86,7 @@ public class Agencia {
 
     @Override
     public String toString() {
-        return "Agencia{" + "nomeAgencia=" + nomeAgencia + ", numeroAgencia=" + numeroAgencia + ", enderenco=" + enderenco + ", contas=" + contas + '}'+"\n";
+        return "\n   Agencia{\n"+"            nomeAgencia=" + nomeAgencia + ",\n            numeroAgencia=" + numeroAgencia + ",\n            " + enderenco + ",\n            contas=" + contas + "\n   }";
     }
    
     

@@ -52,7 +52,7 @@ public class Extrato {
 
     @Override
     public String toString() {
-        return "Extrato{" + "trasacao=" + trasacao + '}';
+        return "Extrato{\n" + "trasacao=\n" + trasacao;
     }
     
     
