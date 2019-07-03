@@ -41,10 +41,17 @@ public class Conta {
        return false; 
     }
    
-    public boolean sacaDinheiro(double dinheiro){
-       this.saldo -= dinheiro;
-       extrato.trasacoes(dinheiro,"SAQUE",this.saldo);
-       return true;
+    public boolean sacaDinheiro(double dinheiro){ //Foi tratada a execessão de saque maior que o limite do valor da conta
+        try {
+             if(dinheiro < this.saldo){
+                this.saldo -= dinheiro;
+                extrato.trasacoes(dinheiro,"SAQUE",this.saldo);
+                return true;  
+             } 
+        } catch (Exception e) {
+                 System.err.println("O valor insuficiente na conta");
+        }
+        return false;
     }
     
     public void descontoTaxaTradicional(){

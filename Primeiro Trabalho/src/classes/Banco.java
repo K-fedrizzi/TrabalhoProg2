@@ -11,6 +11,7 @@ public class Banco {
     private List<Agencia> agencias;
 
     public Banco() {
+        String a;
         this.agencias = new LinkedList<Agencia>();
     }
 
@@ -83,13 +84,13 @@ public class Banco {
     }
     
     /*4-Saque*/
-    public boolean saque(String numeroAgencia, String numeroConta, double valor ){
-        for(int i = 0; i < agencias.size();i++)
+    public boolean saque(String numeroAgencia, String numeroConta, double dinheiro ){
+        for(int i = 0; i < agencias.size();i++) //Buscar pelo numero da agencia e o numero da conta para sacar o dinheiro
         {
             if(numeroAgencia.equals(agencias.get(i).getNumeroAgencia())){
                 for(int j = 0;j < agencias.get(i).getContas().size();j++){
                     if(numeroConta.equals(agencias.get(i).getContas().get(j).getNumeroConta())){
-                        agencias.get(i).getContas().get(j).sacaDinheiro(valor);
+                        agencias.get(i).getContas().get(j).sacaDinheiro(dinheiro);
                         return true;
                     }
                 }
@@ -99,13 +100,13 @@ public class Banco {
     }
     
     /*5-Deposito em Conta*/
-    public boolean depositar(String numeroAgencia, String numeroConta, double valor ){
+    public boolean depositar(String numeroAgencia, String numeroConta, double dinheiro ){
         for(int i = 0; i < agencias.size();i++)
         {
             if(numeroAgencia.equals(agencias.get(i).getNumeroAgencia())){
                 for(int j = 0;j < agencias.get(i).getContas().size();j++){
                     if(numeroConta.equals(agencias.get(i).getContas().get(j).getNumeroConta())){
-                        agencias.get(i).getContas().get(j).depositarDinheiro(valor);
+                        agencias.get(i).getContas().get(j).depositarDinheiro(dinheiro);
                         return true;
                     }
                 }
@@ -184,7 +185,7 @@ public class Banco {
         ComparadorConta comparaConta2 = new ComparadorConta("NOME");
         for(int i=0; i < agencias.size(); i++ ){
             for(int j=0; j < agencias.get(i).getContas().size(); j++){
-                Collections.sort(agencias.get(i).getContas(),comparaConta2);//Ordena pelo numero da Conta
+                Collections.sort(agencias.get(i).getContas(),comparaConta2);//Ordena pelo nomedo cliente
             }
         }
         
